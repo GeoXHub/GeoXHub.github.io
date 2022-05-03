@@ -21,6 +21,7 @@ h2 {
   font-size: 1em;
 }
 </style>
+<img src="Ikea_logo.svg.png" style="width:100px;height:40px;left:10px;position:absolute">
 <h1>Sample size and budget calculator</h1>
 <center>
 <p>Base conversion rate:<input id="input1" size="5"/>
@@ -31,6 +32,9 @@ h2 {
 <p>Sample size: <input id="output1" size = "5"/> 
   Budget: <input id = "output2" size = "5"/> 
   Budget over 3 weeks: <input id = "output3" size = "5"/></p>
+</center>
+<center>
+
 </center>
 
 <script>
@@ -43,20 +47,13 @@ h2 {
     sampleSize = num1*(1-num1)+conv*(1-conv)/(Math.pow(num1-conv,2)*Math.pow(0.84+1.96,2));
     Budget = (num2/1000)*sampleSize;
     BudgetPrWeek = Budget /3;
-    // if (this.id == "ssize") {
-    //     result = sampleSize
-    // } else if (this.id == "budget") {
-    //     result = Budget;
-    // } else if (this.id == "bo3w") {
-    //     result = BudgetPrWeek;
-    // }
     document.getElementById("output1").value = sampleSize;
     document.getElementById('output2').value = Budget;
     document.getElementById('output3').value = BudgetPrWeek;
 };
 
 var signs_buttons = document.getElementsByClassName("sign");
-for(var i=0;i<signs_buttons.length;i++){
-    signs_buttons[i].addEventListener('click', do_calcul, false);
-}
+  for(var i=0;i<signs_buttons.length;i++){
+     signs_buttons[i].addEventListener('click', do_calcul, false);
+ }
 </script>

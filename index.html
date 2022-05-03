@@ -1,0 +1,61 @@
+<meta charset="utf-8">
+<title>Sample size Calculator</title>
+<style>
+body {
+  background-color: #faf2e4;
+  margin: 0 5%;
+  font-family: sans-serif;
+  }
+
+h1 {
+  text-align: center;
+  font-family: serif;
+  font-weight: normal;
+  text-transform: uppercase;
+  border-bottom: 1px solid #57b1dc;
+  margin-top: 30px;
+}
+
+h2 {
+  color: #d1633c;
+  font-size: 1em;
+}
+</style>
+<h1>Sample size and budget calculator</h1>
+
+<p>Base conversion rate:<input id="input1" size="5"/>
+   CPM: <input id="input2" size="5"/> 
+  <button class="sign" id="ssize" style = "position:relative; left:20px; top:px;">Calculate</button> </p>
+
+<p>Sample size: <input id="output1" size = "5"/> 
+  Budget: <input id = "output2" size = "5"/> 
+  Budget over 3 weeks: <input id = "output3" size = "5"/></p>
+
+
+<script>
+  var do_calcul = function() {
+    var num1 = Number(document.getElementById("input1").value);
+    var num2 = Number(document.getElementById("input2").value);
+    var result;
+    num1/= 100;
+    conv = num1*0.05+num1;
+    sampleSize = num1*(1-num1)+conv*(1-conv)/(Math.pow(num1-conv,2)*Math.pow(0.84+1.96,2));
+    Budget = (num2/1000)*sampleSize;
+    BudgetPrWeek = Budget /3;
+    // if (this.id == "ssize") {
+    //     result = sampleSize
+    // } else if (this.id == "budget") {
+    //     result = Budget;
+    // } else if (this.id == "bo3w") {
+    //     result = BudgetPrWeek;
+    // }
+    document.getElementById("output1").value = sampleSize;
+    document.getElementById('output2').value = Budget;
+    document.getElementById('output3').value = BudgetPrWeek;
+};
+
+var signs_buttons = document.getElementsByClassName("sign");
+for(var i=0;i<signs_buttons.length;i++){
+    signs_buttons[i].addEventListener('click', do_calcul, false);
+}
+</script>

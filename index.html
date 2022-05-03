@@ -19,12 +19,40 @@ h1 {
   border-bottom: 1px solid #57b1dc;
   margin-top: 30px;
 }
+.powered-by-footer {
+border-radius: 4px;
+background: #fff;
+padding: 10px 15px 10px 12px;
+font-size: 14px;
+bottom: 15px;
+left: 15px;
+position: fixed;
+box-shadow: 0 4px 4px 0 rgb(0 0 0 / 10%);
+text-decoration: none;
+font-family: -apple-system,\.SFNSDisplay-Regular,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.powered-by-footer .logo{
+background: url(https://assets.gumroad.com/packs/media/logo/logo-74072d46.svg) 0 0 no-repeat;
+display: inline-block;
+height: 16px;
+width: 17px;
+margin-right: 8px;
+vertical-align: text-bottom;
+}
 
 
 h2 {
-  color: #d1633c;
+  color: #0000000;
   font-size: 1em;
 }
+
+h3 {
+  color: #0000000;
+  font-size: 1em;
+}
+
+
 </style>
 <img src="Ikea_logo.svg.png" style="width:100px;height:40px;left:10px;position:absolute">
 <img src="acc.svg" style="width:100px;height:px;left:10px;position:absolute;top:80">
@@ -59,10 +87,12 @@ h2 {
     document.getElementById("samp").innerHTML = Math.round(sampleSize);
     document.getElementById('budget').innerHTML = Math.round((Budget + Number.EPSILON) * 100) / 100;
     document.getElementById('bo3w').innerHTML = Math.round((BudgetPrWeek + Number.EPSILON) * 100) / 100
-};1
+    
+};
 
 var signs_buttons = document.getElementsByClassName("sign");
   for(var i=0;i<signs_buttons.length;i++){
      signs_buttons[i].addEventListener('click', do_calcul, false);
  }
 </script>
+

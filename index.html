@@ -19,28 +19,20 @@ h1 {
   border-bottom: 1px solid #57b1dc;
   margin-top: 30px;
 }
-.powered-by-footer {
-border-radius: 4px;
-background: #fff;
-padding: 10px 15px 10px 12px;
-font-size: 14px;
-bottom: 15px;
-left: 15px;
-position: fixed;
-box-shadow: 0 4px 4px 0 rgb(0 0 0 / 10%);
-text-decoration: none;
-font-family: -apple-system,\.SFNSDisplay-Regular,Helvetica Neue,Helvetica,Arial,sans-serif;
-}
 
-.powered-by-footer .logo{
-background: url(https://assets.gumroad.com/packs/media/logo/logo-74072d46.svg) 0 0 no-repeat;
-display: inline-block;
-height: 16px;
-width: 17px;
-margin-right: 8px;
-vertical-align: text-bottom;
+label{
+    display: inline-block;
+    clear: left;
+    width: 250px;
+    text-align: right;
 }
-
+input {
+  display: inline-block;
+  float: right;
+}
+.input:after {
+  content: '%';
+}
 
 h2 {
   color: #000;
@@ -55,12 +47,13 @@ h3 {
 
 </style>
 <img src="Ikea_logo.svg.png" style="width:100px;height:40px;left:10px;position:absolute">
-<img src="acc.svg" style="width:100px;height:px;left:10px;position:absolute;top:80">
 <h1>Sample size and budget calculator</h1>
-<center>
-<h3>Base conversion rate: <input id="input1" size="5"/>
-   CPM: <input id="input2" size="5"/> 
-  <button class="sign" id="ssize" style = "position:relative; left:20px; top:px;">Calculate</button> </h3>
+
+
+<h3>Base conversion rate: <input id="input1" size="5"/> <br>
+   CPM: <input id="input2" size="5"/> </h3><br>
+   <center>
+  <button class="sign" id="ssize" style = "position:relative; left:20px;width:200;height: 50;"><span>Calculate </span></button>
 </center>
 <center>
   <h2 style="text-align:left;float:left;">Sample Size: </h2><br>

@@ -35,13 +35,16 @@ h2 {
   <button class="sign" id="ssize" style = "position:relative; left:20px; top:px;">Calculate</button> </p>
 </center>
 <center>
-<p>Sample size: <input id="output1" size = "5"/> 
-  Budget: <input id = "output2" size = "5"/> 
-  Budget over 3 weeks: <input id = "output3" size = "5"/></p>
+  <h2 style="text-align:left;float:left;">Sample Size: </h2><br>
+  <h2 id="samp" style="text-align:right;float:right"></h2>
+  <hr style = "clear:both">
+  <h2 style="text-align:left;float:left;"> Budget:</h2> <br>
+  <h2 id="budget" style="text-align:right;float:right"> </h2> 
+  <hr style = "clear:both">
+  <h2 style="text-align:left;float:left;">Budget over 3 weeks:
+  <h2 id="bo3w" style="text-align:right;float:right"> </h2>
 </center>
-<center>
 
-</center>
 
 <script>
   var do_calcul = function() {
@@ -53,10 +56,10 @@ h2 {
     sampleSize = num1*(1-num1)+conv*(1-conv)/(Math.pow(num1-conv,2)*Math.pow(0.84+1.96,2));
     Budget = (num2/1000)*sampleSize;
     BudgetPrWeek = Budget /3;
-    document.getElementById("output1").value = sampleSize;
-    document.getElementById('output2').value = Budget;
-    document.getElementById('output3').value = BudgetPrWeek;
-};
+    document.getElementById("samp").innerHTML = Math.round(sampleSize);
+    document.getElementById('budget').innerHTML = Math.round((Budget + Number.EPSILON) * 100) / 100;
+    document.getElementById('bo3w').innerHTML = Math.round((BudgetPrWeek + Number.EPSILON) * 100) / 100
+};1
 
 var signs_buttons = document.getElementsByClassName("sign");
   for(var i=0;i<signs_buttons.length;i++){

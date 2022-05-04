@@ -66,7 +66,6 @@ h4 {
 <img src="Ikea_logo.svg.png" style="width:140px;height:74px;left:10px;position:absolute">
 <h1>Sample size and budget calculator</h1>
 
-
 <h3>
   Base conversion rate:
   <div class="wrapper">
@@ -299,8 +298,14 @@ h4 {
     document.getElementById('incr').innerHTML = "An uplift from " + num1*100 + "% to " + conv*100 + "% is significant if we have:"
 };
 
-var signs_buttons = document.getElementsByClassName("sign");
-signs_buttons[0].addEventListener('click', do_calcul, false);
- 
+var signs_buttons = document.getElementById("ssize");
+signs_buttons.addEventListener('click',do_calcul, false);
+signs_buttons.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("ssize").click();
+  }
+});
+
 </script>
 

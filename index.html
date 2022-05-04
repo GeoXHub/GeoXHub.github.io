@@ -255,7 +255,7 @@ h4 {
   <h2 style="text-align:left;float:left;"> Budget:</h2> <br>
   <h2 id="budget" style="text-align:right;float:right"> </h2> 
   <hr style = "clear:both">
-  <h2 style="text-align:left;float:left;">Budget over 3 weeks:
+  <h2 style="text-align:left;float:left;">Budget pr. week over 3 weeks:
   <h2 id="bo3w" style="text-align:right;float:right"> </h2>
 
 
@@ -268,10 +268,11 @@ h4 {
     var num2 = Number(document.getElementById("input2").value);
     var result;
     num1/= 100;
-    conv = num1*0.05+num1;
-    pve = num1*(1-num1)+conv*(1-conv);
-    f = Math.pow(num1-conv,2);
-    sampleSize = (pve/f)*Math.pow(0.84+1.96,2);
+    mde = 0.05
+
+    a = 1.645 * Math.sqrt(((2+mde)*(2-2*(num1)-num1*mde)/2));
+    b = 0.842 * Math.sqrt(1-num1 + (1+mde)*(1-num1-num1*mde))
+    sampleSize = Math.pow(a+b, 2)/(Math.pow(mde,2)*num1)
     Budget = (num2/1000)*sampleSize;
     Budget1 = Math.round((Budget + Number.EPSILON) * 100) / 100;
     BudgetPrWeek = Budget /3;
@@ -280,8 +281,6 @@ h4 {
     document.getElementById("samp").innerHTML = Math.round(sampleSize);
     document.getElementById('budget').innerHTML = Budget1 + " " + document.getElementById('currency').value
     document.getElementById('bo3w').innerHTML = BudgetprWeek1 + " " + document.getElementById('currency').value
-
-    
 };
 
 var signs_buttons = document.getElementsByClassName("sign");

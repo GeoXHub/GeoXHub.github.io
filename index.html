@@ -296,7 +296,7 @@ h4 {
     document.getElementById("samp").innerHTML = Math.round(sampleSize);
     document.getElementById('budget').innerHTML = Budget1 + " " + document.getElementById('currency').value
     document.getElementById('bo3w').innerHTML = BudgetprWeek1 + " " + document.getElementById('currency').value
-    document.getElementById('incr').innerHTML = "An uplift from " + num1 + "% to " + conv + "% is significant if we have:"
+    document.getElementById('incr').innerHTML = "An uplift from " + num1*100 + "% to " + conv*100 + "% is significant if we have:"
 };
 
 var signs_buttons = document.getElementsByClassName("sign");

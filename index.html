@@ -34,6 +34,12 @@ label{
   padding:0;
   float:right;
 }
+.container1{
+  width:0%;
+  margin:0;
+  padding:0;
+  float:left;
+}
 input {border:none; width:90px}
 .label {width:20px;}
 .wrapper {display: inline-block;border: none gray; width:110px;float:right}
@@ -50,7 +56,7 @@ h3 {
 h4 {
   color: #000;
   font-size: 1.5em;
-  text-align: center;
+  text-align: left;
 }
 
 
@@ -249,7 +255,14 @@ h4 {
   <button class="sign" id="ssize" style = "position:relative; left:20px;width:120;height: 60;
   text-align: center; display:inline-block"><h2>Calculate</h2> </span></button>
 </center>
+
+
+  
+
+
 <center>
+  <h3 id="incr" style="text-align:right;float:right"></h3>
+  <hr style = "clear:both">
   <h2 style="text-align:left;float:left;">Sample Size: </h2><br>
   <h2 id="samp" style="text-align:right;float:right"></h2>
   <hr style = "clear:both">
@@ -270,6 +283,7 @@ h4 {
     var result;
     num1/= 100;
     mde = 0.05
+    conv = (1+mde)*num1
 
     a = 1.645 * Math.sqrt(((2+mde)*(2-2*(num1)-num1*mde)/2));
     b = 0.842 * Math.sqrt(1-num1 + (1+mde)*(1-num1-num1*mde))
@@ -282,6 +296,7 @@ h4 {
     document.getElementById("samp").innerHTML = Math.round(sampleSize);
     document.getElementById('budget').innerHTML = Budget1 + " " + document.getElementById('currency').value
     document.getElementById('bo3w').innerHTML = BudgetprWeek1 + " " + document.getElementById('currency').value
+    document.getElementById('incr').innerHTML = "An uplift from " + num1 + "% to " + conv + "% is significant if we have:"
 };
 
 var signs_buttons = document.getElementsByClassName("sign");

@@ -269,7 +269,9 @@ h4 {
     var result;
     num1/= 100;
     conv = num1*0.05+num1;
-    sampleSize = num1*(1-num1)+conv*(1-conv)/(Math.pow(num1-conv,2)*Math.pow(0.84+1.96,2));
+    pve = num1*(1-num1)+conv*(1-conv);
+    f = Math.pow(num1-conv,2);
+    sampleSize = (pve/f)*Math.pow(0.84+1.96,2);
     Budget = (num2/1000)*sampleSize;
     Budget1 = Math.round((Budget + Number.EPSILON) * 100) / 100;
     BudgetPrWeek = Budget /3;

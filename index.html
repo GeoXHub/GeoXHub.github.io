@@ -26,13 +26,16 @@ label{
     width: 250px;
     text-align: right;
 }
-input {
-  display: inline-block;
-  float: right;
+
+.container{
+  width:15%;
+  margin:0;
+  padding:0;
+  float:right;
 }
-.input:after {
-  content: '%';
-}
+input {border:none; width:90px}
+.label {width:20px;}
+.wrapper {display: inline-block;border: none gray; width:110px;float:right}
 
 h2 {
   color: #000;
@@ -46,12 +49,32 @@ h3 {
 
 
 </style>
-<img src="Ikea_logo.svg.png" style="width:100px;height:40px;left:10px;position:absolute">
+<img src="Ikea_logo.svg.png" style="width:140px;height:74px;left:10px;position:absolute">
 <h1>Sample size and budget calculator</h1>
 
 
-<h3>Base conversion rate: <input id="input1" size="5"/> <br>
-   CPM: <input id="input2" size="5"/> </h3><br>
+<h3>
+  Base conversion rate:
+  <div class="wrapper">
+    <input id="input1" size="5"/>
+    <span class="label">%</span>
+  </div>
+</h3> 
+<h3>
+  CPM:
+  <div class="wrapper">
+    <input id="input2" size="5"/> 
+  
+  <span class="container">
+    <select id="currency" name="currency">
+    <option value="€">€</option>
+    <option value="£">£</option>
+    <option value="$">$</option>
+</select></span>
+  </div>
+</h3> 
+
+
    <center>
   <button class="sign" id="ssize" style = "position:relative; left:20px;width:200;height: 50;"><span>Calculate </span></button>
 </center>
@@ -64,6 +87,8 @@ h3 {
   <hr style = "clear:both">
   <h2 style="text-align:left;float:left;">Budget over 3 weeks:
   <h2 id="bo3w" style="text-align:right;float:right"> </h2>
+
+
 </center>
 
 
@@ -76,16 +101,19 @@ h3 {
     conv = num1*0.05+num1;
     sampleSize = num1*(1-num1)+conv*(1-conv)/(Math.pow(num1-conv,2)*Math.pow(0.84+1.96,2));
     Budget = (num2/1000)*sampleSize;
+    Budget1 = Math.round((Budget + Number.EPSILON) * 100) / 100;
     BudgetPrWeek = Budget /3;
+    BudgetprWeek1 = (Math.round((BudgetPrWeek + Number.EPSILON) * 100) / 100).toString()
+
     document.getElementById("samp").innerHTML = Math.round(sampleSize);
-    document.getElementById('budget').innerHTML = Math.round((Budget + Number.EPSILON) * 100) / 100;
-    document.getElementById('bo3w').innerHTML = Math.round((BudgetPrWeek + Number.EPSILON) * 100) / 100
+    document.getElementById('budget').innerHTML = Budget1 + " " + document.getElementById('currency').value
+    document.getElementById('bo3w').innerHTML = BudgetprWeek1 + " " + document.getElementById('currency').value
+
     
 };
 
 var signs_buttons = document.getElementsByClassName("sign");
-  for(var i=0;i<signs_buttons.length;i++){
-     signs_buttons[i].addEventListener('click', do_calcul, false);
- }
+signs_buttons[0].addEventListener('click', do_calcul, false);
+ 
 </script>
 

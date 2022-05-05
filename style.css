@@ -57,6 +57,7 @@ body {
   footer {
       clear: both;
       position: relative;
+      height: 375px;
       text-align: center;
   }
   button {

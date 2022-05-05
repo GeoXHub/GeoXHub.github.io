@@ -86,14 +86,14 @@ button {
 <h3>
   Base conversion rate:
   <div class="wrapper">
-    <input id="input1" size="5"/>
+    <input id="BCR" size="5"/>
     <span class="label">%</span>
   </div>
 </h3> 
 <h3>
   CPM:
   <div class="wrapper">
-    <input id="input2" size="5"/> 
+    <input id="CPM" size="5"/> 
     
     <span class="container">
       <select id="currency" name="currency">
@@ -265,6 +265,13 @@ button {
 </span>
   </div>
 </h3> 
+<h3>
+  Minimum detectable effect:
+  <div class="wrapper">
+    <input id = "MDE" size="5" value="5"/>
+    <span class="label">%</span>
+    </div>
+</h3>
 
 
    <center>
@@ -276,7 +283,7 @@ button {
 
 
 <center>
-  <h3 id="incr" style="text-align:right;float:right"></h3>
+  <h3 id="incr" style="text-align:left;float:left"></h3>
   <hr style = "clear:both">
   <h2 style="text-align:left;float:left;">Sample Size: </h2><br>
   <h2 id="samp" style="text-align:right;float:right"></h2>
@@ -296,16 +303,17 @@ button {
 
 <script>
   var do_calcul = function() {
-    var num1 = Number(document.getElementById("input1").value);
-    var num2 = Number(document.getElementById("input2").value);
+    var num1 = Number(document.getElementById("BCR").value);
+    var num2 = Number(document.getElementById("CPM").value);
+    var mde = Number(document.getElementById('MDE').value);
     var result;
     num1/= 100;
-    mde = 0.05
-    conv = (1+mde)*num1
+    mde /= 100;
+    conv = (1+mde)*num1;
 
     a = 1.645 * Math.sqrt(((2+mde)*(2-2*(num1)-num1*mde)/2));
-    b = 0.842 * Math.sqrt(1-num1 + (1+mde)*(1-num1-num1*mde))
-    sampleSize = Math.pow(a+b, 2)/(Math.pow(mde,2)*num1)
+    b = 0.842 * Math.sqrt(1-num1 + (1+mde)*(1-num1-num1*mde));
+    sampleSize = Math.pow(a+b, 2)/(Math.pow(mde,2)*num1);
     Budget = (num2/1000)*sampleSize;
     Budget1 = Math.round((Budget + Number.EPSILON) * 100) / 100;
     BudgetPrWeek = Budget /3;
@@ -314,7 +322,7 @@ button {
     document.getElementById("samp").innerHTML = Math.round(sampleSize);
     document.getElementById('budget').innerHTML = Budget1 + " " + document.getElementById('currency').value
     document.getElementById('bo3w').innerHTML = BudgetprWeek1 + " " + document.getElementById('currency').value
-    document.getElementById('incr').innerHTML = "An uplift from " + num1*100 + "% to " + conv*100 + "% is significant if we have:"
+    document.getElementById('incr').innerHTML = "An uplift from " + num1*100 + "% to " + (conv*100).toFixed(3) + "% is significant if we have:"
 };
 
 var signs_buttons = document.getElementById("ssize");

@@ -1,8 +1,70 @@
-@import url(https://db.onlinewebfonts.com/c/2b9a54453c1a3cbc651c0788ade94e4a?family=Noto+IKEA+Latin);
-@font-face {font-family: "Noto IKEA Latin"; src: url("https://db.onlinewebfonts.com/t/2b9a54453c1a3cbc651c0788ade94e4a.eot");
-    src: url("https://db.onlinewebfonts.com/t/2b9a54453c1a3cbc651c0788ade94e4a.eot?#iefix") format("embedded-opentype"),
-    url("https://db.onlinewebfonts.com/t/2b9a54453c1a3cbc651c0788ade94e4a.woff2") format("woff2"),
-     url("https://db.onlinewebfonts.com/t/2b9a54453c1a3cbc651c0788ade94e4a.woff") format("woff"),
-      url("https://db.onlinewebfonts.com/t/2b9a54453c1a3cbc651c0788ade94e4a.ttf") format("truetype"),
-       url("https://db.onlinewebfonts.com/t/2b9a54453c1a3cbc651c0788ade94e4a.svg#Noto IKEA Latin") format("svg"); }
-   
+body {
+    background-color: #faf2e4;
+    margin: 0 20%;
+    font-family: Noto IKEA Latin;
+    overflow: hidden;
+    }
+  
+  
+  h1 {
+    
+    text-align: center;
+    font-family: Noto IKEA Latin;
+    font-weight: normal;
+    text-transform: uppercase;
+    border-bottom: 1px solid #57b1dc;
+    margin-top: 30px;
+  }
+  
+  label{
+      display: inline-block;
+      clear: left;
+      width: 250px;
+      text-align: right;
+  }
+  
+  .container{
+    width:17%;
+    margin:0;
+    padding:0;
+    float:right;
+  }
+  .container1{
+    width:0%;
+    margin:0;
+    padding:0;
+    float:left;
+  }
+  input {border:none; width:90px}
+  .label {width:20px;}
+  .wrapper {display: inline-block;border: none gray; width:110px;float:right}
+  
+  h2 {
+    color: #000;
+    font-size: 1.5em;
+  }
+  
+  h3 {
+    color: #000;
+    font-size: 1em;
+  }
+  h4 {
+    color: #000;
+    font-size: 1.5em;
+    text-align: left;
+  }
+  
+  footer {
+      clear: both;
+      position: relative;
+      height: 375px;
+      text-align: center;
+  }
+  button {
+    position:relative;
+    left:20px;
+    width:120;
+    height:60;
+    text-align: center;
+    display:inline-block;
+  }

@@ -32,3 +32,4 @@ for(var i = 0; i < inputs.length; i++) {
     document.getElementById("ssize").click();
   }
 });
+}

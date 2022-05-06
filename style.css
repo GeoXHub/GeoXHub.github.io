@@ -68,3 +68,73 @@ body {
     text-align: center;
     display:inline-block;
   }
+  .infolink{
+    position: absolute;
+    top: 60px;
+    right: 60px;
+    text-align: center;
+}
+
+.infolink:before
+{
+    content: 'Help';
+    display: inline-block;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+    width:  10ex;
+    height: 3ex;
+    font-size: 3ex;
+    line-height: 3ex;
+    border-radius: 4ex;
+    margin-right: 4px;
+    padding: 1px;
+    color: rgb(3, 3, 3);
+    background: white;
+    border: 1px solid #000000;
+    text-decoration: none;
+}
+
+.infolink:hover:before
+{
+    color: white;
+    background: rgb(138, 52, 52);
+    border-color: #faf2e4;
+    text-decoration: none;
+}
+
+.frontpage{
+    position: absolute;
+    top: 60px;
+    right: 60px;
+    text-align: center;
+}
+
+.frontpage:before
+{
+    content: 'Return';
+    display: inline-block;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
+    width:  10ex;
+    height: 3ex;
+    font-size: 3ex;
+    line-height: 3ex;
+    border-radius: 4ex;
+    margin-right: 4px;
+    padding: 1px;
+    color: rgb(3, 3, 3);
+    background: white;
+    border: 1px solid #000000;
+    text-decoration: none;
+}
+
+.frontpage:hover:before
+{
+    color: white;
+    background: rgb(138, 52, 52);
+    border-color: #faf2e4;
+    text-decoration: none;
+}
+

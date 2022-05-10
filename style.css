@@ -112,12 +112,12 @@ body {
 
 .frontpage:before
 {
-    content: 'Return';
+    content: 'Return to Calculator';
     display: inline-block;
     font-family: sans-serif;
     font-weight: bold;
     text-align: center;
-    width:  10ex;
+    width:  20ex;
     height: 3ex;
     font-size: 3ex;
     line-height: 3ex;
@@ -133,7 +133,7 @@ body {
 .frontpage:hover:before
 {
     color: white;
-    background: rgb(138, 52, 52);
+    background: rgb(56, 58, 179);
     border-color: #faf2e4;
     text-decoration: none;
 }

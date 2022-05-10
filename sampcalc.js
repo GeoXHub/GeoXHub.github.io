@@ -16,10 +16,14 @@ var do_calcul = function() {
     Budget = (num2/1000)*sampleSize;
     Budget1 = Math.round(((Budget*freq) + Number.EPSILON) * 100) / 100;
 
-    document.getElementById("samp").innerHTML = Math.round(sampleSize);
-    document.getElementById('budget').innerHTML = Budget1 + " " + document.getElementById('currency').value
+    document.getElementById("sampc").innerHTML = Math.round(sampleSize).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");;
+    document.getElementById("sampt").innerHTML = Math.round(sampleSize).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");;
+    document.getElementById('budgetc').innerHTML = Budget1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " " + document.getElementById('currency').value;
+    document.getElementById('budgett').innerHTML = Budget1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " " + document.getElementById('currency').value;
     document.getElementById('incr').innerHTML = "An uplift from " + num1*100 + "% to " + (conv*100).toFixed(3) + "% is significant if we have:"
-};
+    document.getElementById('samptot').innerHTML = Math.round(sampleSize+sampleSize).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    document.getElementById('budgettot').innerHTML = (Budget1 + Budget1).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + document.getElementById('currency').value;
+  };
 
 var signs_buttons = document.getElementById("ssize");
 var inputs = document.getElementsByClassName('wrapper')
@@ -32,4 +36,9 @@ for(var i = 0; i < inputs.length; i++) {
     document.getElementById("ssize").click();
   }
 });
+
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 }

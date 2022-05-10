@@ -7,9 +7,13 @@
 </head>
 
 <img src="Ikea_logo.svg.png" style="width:210px;height:100px;left:100px;position:fixed">
-<h1>Sample size and budget calculator</h1>
+<h1> A/B Test, budget calculator</h1>
 <p class="help.tip"></p>
 <a class="infolink" href="Help.html"></a>
+<i>This Calculator will help you set up A/B tests that will ensure statistical significance. 
+  If you just use a random budget the results may differ if you run the same test multiple times,
+   which will result in wrong implementations and ultimately a waste of time and money. To ensure correct results from experiments enter the Base conversion rate, the CPM and the frequency of which you target consumers and the calculator will do the rest. </i>
+<hr style="clear:both">
 <h3>
   Base conversion rate: 
   <div class="wrapper">
@@ -192,6 +196,12 @@
 </span>
   </div>
 </h3> 
+<h3>
+  Frequency
+  <div class="wrapper">
+    <input id="Frequency" size = "5"/>
+  </div>
+</h3>
 <!-- <h3>
   Minimum detectable effect:
   <div class="wrapper">
@@ -212,9 +222,9 @@
   <h2 style="text-align:left;float:left;"> Budget:</h2> <br>
   <h2 id="budget" style="text-align:right;float:right"> </h2> 
   <hr style = "clear:both">
-  <h2 style="text-align:left;float:left;">Budget pr. week over 3 weeks:
+  <!-- <h2 style="text-align:left;float:left;">Budget pr. week over 3 weeks:
   <h2 id="bo3w" style="text-align:right;float:right"> </h2>
-  <hr style="clear:both">
+  <hr style="clear:both"> -->
 </center>
 
 <script type="text/javascript" src="sampcalc.js"></script>

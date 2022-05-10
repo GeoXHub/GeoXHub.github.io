@@ -1,11 +1,10 @@
 var do_calcul = function() {
     var num1 = document.getElementById("BCR").value;
-    num1 = Number(num1.replace(",","."));
     var num2 = document.getElementById("CPM").value;
-    num2 = Number(num2.replace(",","."));
     var freq = document.getElementById("Frequency").value;
+    num1 = Number(num1.replace(",","."));
+    num2 = Number(num2.replace(",","."));
     freq = Number(freq.replace(",","."))
-    // var mde = Number(document.getElementById('MDE').value);
     var mde = 5;
     num1/= 100;
     mde /= 100;
@@ -16,12 +15,9 @@ var do_calcul = function() {
     sampleSize = Math.pow(a+b, 2)/(Math.pow(mde,2)*num1);
     Budget = (num2/1000)*sampleSize;
     Budget1 = Math.round(((Budget*freq) + Number.EPSILON) * 100) / 100;
-    // BudgetPrWeek = Budget /3;
-    // BudgetprWeek1 = (Math.round((BudgetPrWeek + Number.EPSILON) * 100) / 100).toString()
 
     document.getElementById("samp").innerHTML = Math.round(sampleSize);
     document.getElementById('budget').innerHTML = Budget1 + " " + document.getElementById('currency').value
-    // document.getElementById('bo3w').innerHTML = BudgetprWeek1 + " " + document.getElementById('currency').value
     document.getElementById('incr').innerHTML = "An uplift from " + num1*100 + "% to " + (conv*100).toFixed(3) + "% is significant if we have:"
 };
 

@@ -2,7 +2,6 @@ body {
     background-color: #faf2e4;
     margin: 0 20%;
     font-family: Noto IKEA Latin;
-    overflow: hidden;
     }
   
   
@@ -55,12 +54,12 @@ body {
   }
   
   footer {
-    position: absolute;
-    bottom: 0;
-    width: 65%;
+    clear: both;
+    position: relative;
     height: 50px;
     text-align: center;
-  }
+    margin-top: 180px;
+}
   button {
     position:relative;
     left:20px;
@@ -139,3 +138,20 @@ body {
     text-decoration: none;
 }
 
+.frac {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  letter-spacing: 0.001em;
+  text-align: center;
+}
+.frac > span {
+  display: block;
+  padding: 0.1em;
+}
+.frac span.bottom {
+  border-top: thin solid black;
+}
+.frac span.symbol {
+  display: none;
+} 

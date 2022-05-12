@@ -16,7 +16,7 @@ var do_calcul = function() {
     Budget = (num2/1000)*sampleSize;
     Budget1 = Math.round(((Budget*freq) + Number.EPSILON) * 100) / 100;
 
-    document.getElementById("sampc").innerHTML = Math.round(sampleSize).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");;
+    document.getElementById("sampc").innerHTML = "Within 10 % variance of test sample size";
     document.getElementById("sampt").innerHTML = Math.round(sampleSize).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");;
     document.getElementById('budgetc').innerHTML = Budget1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " " + document.getElementById('currency').value;
     document.getElementById('budgett').innerHTML = Budget1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " " + document.getElementById('currency').value;

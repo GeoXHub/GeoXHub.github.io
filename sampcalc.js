@@ -21,7 +21,7 @@ var do_calcul = function() {
     document.getElementById('budgetc').innerHTML = Budget1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " " + document.getElementById('currency').value;
     document.getElementById('budgett').innerHTML = Budget1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " " + document.getElementById('currency').value;
     document.getElementById('incr').innerHTML = "An uplift from " + num1*100 + "% to " + (conv*100).toFixed(3) + "% is significant if we have:"
-    document.getElementById('samptot').innerHTML = Math.round(sampleSize+sampleSize).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    document.getElementById('samptot').innerHTML = "&#8773;" + Math.round(sampleSize+sampleSize).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     document.getElementById('budgettot').innerHTML = (Budget1 + Budget1).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + document.getElementById('currency').value;
   };
 

@@ -18,11 +18,11 @@ var do_calcul = function() {
 
     document.getElementById("sampc").innerHTML = "Within 10 % variance of test sample size";
     document.getElementById("sampt").innerHTML = Math.round(sampleSize).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");;
-    document.getElementById('budgetc').innerHTML = Budget1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " " + document.getElementById('currency').value;
+    document.getElementById('budgetc').innerHTML = "&#8773;" + Budget1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " " + document.getElementById('currency').value;
     document.getElementById('budgett').innerHTML = Budget1.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " " + document.getElementById('currency').value;
     document.getElementById('incr').innerHTML = "An uplift from " + num1*100 + "% to " + (conv*100).toFixed(3) + "% is significant if we have:"
     document.getElementById('samptot').innerHTML = "&#8773;" + Math.round(sampleSize+sampleSize).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    document.getElementById('budgettot').innerHTML = (Budget1 + Budget1).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + document.getElementById('currency').value;
+    document.getElementById('budgettot').innerHTML = "&#8773;" + (Budget1 + Budget1).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + document.getElementById('currency').value;
   };
 
 var signs_buttons = document.getElementById("ssize");

@@ -27,9 +27,51 @@
 <h3>
 Base Performance Rate:
 </h3>
-<p>The number of performance metrics (i.e. test KPI) divided by the total number of fx. impressions. Depending on the test KPI, this could be clicks/visits/sales.
-  Look at historical data to get a base performance rate that you expect the Control group to perform at.
+<p>The number of clicks/visits/trasactions (i.e. test KPI) divided by the total number of fx. impressions. Depending on the test KPI, this could be clicks/visits/sales.
+  Look at historical data to get a base performance rate that you expect the Control group to perform at. This can be calculated as:
+  <center>
+  <style type="text/css">
+.tg  {border-collapse:collapse;border-color:#9ABAD9;border-spacing:0;}
+.tg td{background-color:#EBF5FF;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#444;
+  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{background-color:#409cff;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#fff;
+  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-c6q4{font-family:inherit;text-align:center;vertical-align:top}
+    .tg .tg-0lax{text-align:center;vertical-align:top}
+    .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top}
+    </style>
+    <table class="tg">
+    <thead>
+      <tr>
+        <th class="tg-1wig">KPI</th>
+        <th class="tg-1wig">Clicks</th>
+        <th class="tg-1wig">Visits</th>
+        <th class="tg-1wig">Transactions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="tg-0lax">Base performance rate<br> is calculated as:</td>
+        <td class="tg-0lax">  <div class="frac">
+          <span>Clicks</span>
+          <span class="symbol">/</span>
+          <span class="bottom">Impressions</span>
+        </div>
+        <td class="tg-0lax">  <div class="frac">
+          <span>Visits</span>
+          <span class="symbol">/</span>
+          <span class="bottom">Clicks</span>
+        </div>
+        <td class="tg-0lax">  <div class="frac">
+          <span>Transactions</span>
+          <span class="symbol">/</span>
+          <span class="bottom">Visits</span>
+        </div> 
+      </tr>
+    </tbody>
+    </table>
   </p>
+</center>
 <i>
   Example: Lets say your test KPI is Clicks, and you want to test if one campaign is better than another.<br> 
   Using historical data we can see that we usually get 20,000 impressions and 300 clicks.<br>
@@ -48,12 +90,12 @@ Base Performance Rate:
   </center>
 </i><br>
 <i>
-  Example: Lets say your test KPI is conversions and you want to test if one visitation stategy leads to more conversions than another visitation strategy.
+  Example: Lets say your test KPI is Transactions and you want to test if one visitation stategy leads to more Transactions than another visitation strategy.
 <br>
-Using historical data we see that we usually get 500 visits and 15 conversions. Now the base performance rate can be calculated by:<br>
+Using historical data we see that we usually get 500 visits and 15 Transactions. Now the base performance rate can be calculated by:<br>
 <center>
   <div class="frac">
-  <span>Conversions</span>
+  <span>Transactions</span>
   <span class="symbol">/</span>
   <span class="bottom">Visits</span>
 </div> = 

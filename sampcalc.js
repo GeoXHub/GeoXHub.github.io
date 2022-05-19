@@ -10,7 +10,7 @@ var do_calcul = function() {
     mde /= 100;
     conv = (1+mde)*num1;
 
-    a = 1.645 * Math.sqrt(((2+mde)*(2-2*(num1)-num1*mde)/2));
+    a = 1.96 * Math.sqrt(((2+mde)*(2-2*(num1)-num1*mde)/2));
     b = 0.842 * Math.sqrt(1-num1 + (1+mde)*(1-num1-num1*mde));
     sampleSize = Math.pow(a+b, 2)/(Math.pow(mde,2)*num1);
     Budget = (num2/1000)*sampleSize;

@@ -24,7 +24,21 @@ var do_calcul = function() {
     cost[i] = Budgets[i]*freq*2;
     }
     let Budget = Math.max(...cost.filter(num => num <= maxbud));
-    
+
+
+    if(mdearr[cost.indexOf(Budget)] <= 0.15){
+      var risk1 = "Small risk of not getting significant results"
+      document.getElementById("risk").style.color = "green"
+    }else if(mdearr[cost.indexOf(Budget)] >0.15  & mdearr[cost.indexOf(Budget)] <= 0.25){
+      risk1 = "Some risk of not getting significant results"
+      document.getElementById('risk').style.color = "orange"
+    }else if(mdearr[cost.indexOf(Budget)] >0.25){
+      risk1 = "HIGH RISK of not getting significant results"
+      document.getElementById('risk').style.color = "red"
+    }else{
+      risk1 = "You need at least" + Math.min(Budgets) + "To conduct a test with these values"
+    }
+
     
     sampleSize = sampleSize1[cost.indexOf(Budget)]
 
@@ -34,7 +48,8 @@ var do_calcul = function() {
     document.getElementById("sampt").innerHTML = Math.round(sampleSize).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");;
     document.getElementById('budgetc').innerHTML = (Budget1/2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " " + document.getElementById('currency').value;
     document.getElementById('budgett').innerHTML = (Budget1/2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " " + document.getElementById('currency').value;
-    document.getElementById('incr').innerHTML = "An uplift from " + num1*100 + "% to " + (conv[cost.indexOf(Budget)]*100).toFixed(3) + "% is significant if we have:"
+    document.getElementById('risk').innerHTML = risk1
+    document.getElementById('incr').innerHTML = "An uplift from " + num1*100 + "% to " + (conv[cost.indexOf(Budget)]*100).toFixed(3) + "% is significant if we have:";
     document.getElementById('samptot').innerHTML = Math.round(sampleSize+sampleSize).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     document.getElementById('budgettot').innerHTML = (Budget1).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + document.getElementById('currency').value;
   };

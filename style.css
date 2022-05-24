@@ -17,12 +17,12 @@ body {
   label{
       display: inline-block;
       clear: left;
-      width: 250px;
+      width: 10000px;
       text-align: right;
   }
   
   .container{
-    width:17%;
+    width:32%;
     margin:0;
     padding:0;
     float:right;
@@ -35,7 +35,7 @@ body {
   }
   input {border:none; width:90px}
   .label {width:20px;}
-  .wrapper {border: none gray; width:110px;float:right}
+  .wrapper {border: none gray; width:140px;float:right}
   
   h2 {
     color: #000;

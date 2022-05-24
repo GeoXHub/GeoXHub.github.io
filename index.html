@@ -36,7 +36,7 @@
     <input id="CPM" size="5"/> 
     
     <span class="container">
-      <select id="currency" name="currency">
+      <select id="currency" name="currency" onchange="myNewFunction(this)";>
       <option value="EUR">EUR</option>
       <option value="USD">USD</option>
       <option value="GBP">GBP</option>
@@ -211,6 +211,13 @@
     <input id="Frequency" size = "5" value="1"/>
   </div>
 </h3>
+<h3>
+  Max budget for test
+  <div class="wrapper">
+    <input id="maxbudget" size = "5"/>
+     <span class="label" id = "maxbud"></span>  
+  </div>
+</h3>
 <i>Refer to Glossary for more information</i><br>
 <br>
    <center>
@@ -244,4 +251,8 @@
 </center>
  <script type="text/javascript" src="sampcalc.js"></script>
 
-
+<script>
+  function myNewFunction(sel) {
+  document.getElementById('maxbud').innerHTML = sel.options[sel.selectedIndex].text;
+}
+</script>

@@ -165,3 +165,7 @@ body {
   display: table;
   clear: both;
 }
+hr.class-1 {
+  border-top: 5px solid #000000;
+  clear: both;
+}

@@ -1,0 +1,139 @@
+<meta charset="utf-8">
+<title>Sample size Calculator</title>
+<head>
+  <link href="head.css" rel="stylesheet" type="text/css"/>
+  <link href="Ikea_logo.svg.png" rel="icon" >
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<img src="Ikea_logo.svg.png" style="width:210px;height:100px;left:100px;position:fixed">
+<h1>Glossary</h1>
+<a class="frontpage" href="calculator.html"></a>
+<h3>
+  <u>5 steps for successful A/B Testing</u>
+</h3>
+<ol type = "1">
+<li>Determine test variable: What tactic are you testing? Examples: Call to action, ad imagery, targeting, landing page</li><br>
+<li>Identify test KPI: What is the primary metric that will determine the winning tactic? Examples: CTR, CPSV, ROAS</li><br>
+<li>Define test and control groups. Control group reflects the standard/usual tactic used.
+   Test group reflects the altered tactic that you want to compare to your standard approach.
+    Remember that the test variable is the only difference between both groups.
+     All other variables such as budget, frequency, creative and duration must be kept the same.</li><br>
+  <li>Split your sample groups equally and randomly. There must be no overlap in users between the sample groups.
+     Most platforms offer A/B tools that automatically create randomized delivery groups. </li><br>
+     <li>Determine sample size. Use Budget Calculator to determine minimum sample size and budget.</li><br>
+</ol>
+<hr style="clear:both">
+<h3>
+Base Performance Rate:
+</h3>
+<p>The number of clicks/visits/trasactions (i.e. test KPI) divided by the total number of fx. impressions. Depending on the test KPI, this could be clicks/visits/sales.
+  Look at historical data to get a base performance rate that you expect the Control group to perform at. This can be calculated as:
+  <center>
+  <style type="text/css">
+.tg  {border-collapse:collapse;border-color:#f10303;border-spacing:0;}
+.tg td{background-color:#EBF5FF;border-color:#9ABAD9;border-style:solid;border-width:1px;color:#444;
+  font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{background-color:#EBF5ff;border-color:#9ABAD9;border-style:solid;border-width:1px;color:rgb(0, 0, 0);
+  font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-c6q4{font-family:inherit;text-align:center;vertical-align:top}
+    .tg .tg-0lax{text-align:center;vertical-align:top}
+    .tg .tg-1wig{font-weight:bold;text-align:left;vertical-align:top}
+    </style>
+    <table class="tg">
+    <thead>
+      <tr>
+        <th class="tg-0lax">KPI</th>
+        <th class="tg-0lax">Clicks</th>
+        <th class="tg-0lax">Visits</th>
+        <th class="tg-0lax">Transactions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="tg-0lax">Base performance rate<br> is calculated as:</td>
+        <td class="tg-0lax">  <div class="frac">
+          <span>Clicks</span>
+          <span class="symbol">/</span>
+          <span class="bottom">Impressions</span>
+        </div>
+        <td class="tg-0lax">  <div class="frac">
+          <span>Visits</span>
+          <span class="symbol">/</span>
+          <span class="bottom">Clicks</span>
+        </div>
+        <td class="tg-0lax">  <div class="frac">
+          <span>Transactions</span>
+          <span class="symbol">/</span>
+          <span class="bottom">Visits</span>
+        </div> 
+      </tr>
+    </tbody>
+    </table>
+  </p>
+</center>
+<i>
+  Example: Lets say your test KPI is Clicks, and you want to test if one campaign is better than another.<br> 
+  Using historical data we can see that we usually get 20,000 impressions and 300 clicks.<br>
+  Now we can caluclate the base performance rate to be:<br>
+  <center>
+  <div class="frac">
+  <span>Clicks</span>
+  <span class="symbol">/</span>
+  <span class="bottom">Impressions</span>
+</div> = 
+<div class="frac">
+  <span>300</span>
+  <span class="symbol">/</span>
+  <span class="bottom">20,000</span>
+</div> = 0.015 = 1.5%
+  </center>
+</i><br>
+<i>
+  Example: Lets say your test KPI is Transactions and you want to test if one visitation stategy leads to more Transactions than another visitation strategy.
+<br>
+Using historical data we see that we usually get 500 visits and 15 Transactions. Now the base performance rate can be calculated by:<br>
+<center>
+  <div class="frac">
+  <span>Transactions</span>
+  <span class="symbol">/</span>
+  <span class="bottom">Visits</span>
+</div> = 
+<div class="frac">
+  <span>15</span>
+  <span class="symbol">/</span>
+  <span class="bottom">500</span>
+</div> = 0.03 = 3 %
+  </center>
+</i>
+
+</i>
+<hr style="clear:both">
+<h3>
+Buying CPM:
+</h3>
+<p>Cost per mille (1,000 impressions).</p>
+<i>Example: If we get 12,000 impressions after spending 231 $, then the CPM can be calculated as: <br><br>
+  <center>
+  <div class="frac">
+    <span>Cost</span>
+    <span class="symbol">/</span>
+    <span class = bottom> Impressions</span>
+  </div> <span>&#215;</span> 1,000 = 
+  <div class="frac">
+    <span>231 $</span>
+    <span class="symbol">/</span>
+    <span class = bottom> 12,000</span>
+  </div> <span>&#215;</span> 1,000 = 19.25 $
+  </center>
+</i>
+<hr style="clear:both">
+<h3>
+  Avg. campaign Frequency:
+</h3>
+<p>The frequency of which you target consumers</p>
+<i>Example: if campaign runs for 4 weeks and frequency is 1 pr. week, the avg. campaign frequency is 4 <span>&#215 1 = 4</span>
+
+<footer>
+  For more information on the calculation on sample size <a href="https://datasciencegenie.com/how-to-calculate-the-sample-size-for-an-a-b-testing-including-calculator-derivation/"> Click here</a>
+</footer>

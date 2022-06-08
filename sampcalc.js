@@ -16,29 +16,29 @@ var do_calcul = function() {
     cost = []
     
     for(var i=0;i<mdearr.length;i++){
-    conv[i] = (1+0.1)*num1;
-    a[i] = 1.96 * Math.sqrt(((2+0.1)*(2-2*(num1)-num1*0.1)/2));
-    b[i] = 0.842 * Math.sqrt(1-num1 + (1+0.1)*(1-num1-num1*0.1));
-    sampleSize1[i] = Math.pow(a[i]+b[i], 2)/(Math.pow(0.1,2)*num1);
+    conv[i] = (1+mdearr[i])*num1;
+    a[i] = 1.96 * Math.sqrt(((2+mdearr[i])*(2-2*(num1)-num1*mdearr[i])/2));
+    b[i] = 0.842 * Math.sqrt(1-num1 + (1+mdearr[i])*(1-num1-num1*mdearr[i]));
+    sampleSize1[i] = Math.pow(a[i]+b[i], 2)/(Math.pow(mdearr[i],2)*num1);
     Budgets[i] = (num2/1000)*sampleSize1[i];
     cost[i] = Budgets[i]*freq*2;
     }
     let Budget = Math.max(...cost.filter(num => num <= maxbud));
 
 
-    // if(mdearr[cost.indexOf(Budget)] <= 0.15){
+    if(mdearr[cost.indexOf(Budget)] <= 0.15){
       var risk1 = "Small risk of not getting significant results"
       document.getElementById("risk").style.color = "green"
-    // }else if(mdearr[cost.indexOf(Budget)] >0.15  & mdearr[cost.indexOf(Budget)] <= 0.25){
-    //   risk1 = "Some risk of not getting significant results"
-    //   document.getElementById('risk').style.color = "orange"
-    // }else if(mdearr[cost.indexOf(Budget)] >0.25){
-    //   risk1 = "HIGH RISK of not getting significant results"
-    //   document.getElementById('risk').style.color = "red"
-    // }else{
-    //   risk1 = "You need at least " + Math.min.apply(Math, Budgets)*2 + " " + document.getElementById('currency').value + " to conduct a test with these values"
-    //   document.getElementById('risk').style.color = "red"
-    // }
+    }else if(mdearr[cost.indexOf(Budget)] >0.15  & mdearr[cost.indexOf(Budget)] <= 0.25){
+      risk1 = "Some risk of not getting significant results"
+      document.getElementById('risk').style.color = "orange"
+    }else if(mdearr[cost.indexOf(Budget)] >0.25){
+      risk1 = "HIGH RISK of not getting significant results"
+      document.getElementById('risk').style.color = "red"
+    }else{
+      risk1 = "You need at least " + Math.min.apply(Math, Budgets)*2 + " " + document.getElementById('currency').value + " to conduct a test with these values"
+      document.getElementById('risk').style.color = "red"
+    }
 
     
     sampleSize = sampleSize1[cost.indexOf(Budget)]

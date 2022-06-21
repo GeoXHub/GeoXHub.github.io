@@ -6,7 +6,7 @@ var do_calcul = function() {
     num1 = Number(num1.replace(",","."));
     num2 = Number(num2.replace(",","."));
     freq = Number(freq.replace(",","."));
-    mdearr = [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35];
+    mdearr = [0.05, 0.06, 0.07, 0.08, 0.09,  0.1, 0.11, 0.12, 0.13, 0.14, 0.15, 0.2, 0.25, 0.3, 0.35];
     num1/= 100;
     conv = [];
     a = [];
@@ -25,20 +25,22 @@ var do_calcul = function() {
     }
     let Budget = Math.max(...cost.filter(num => num <= maxbud));
 
+    mde = mdearr[cost.indexOf(Budget)]
 
-    if(mdearr[cost.indexOf(Budget)] <= 0.15){
+    if(mde <= 0.15){
       var risk1 = "Small risk of not getting significant results"
       document.getElementById("risk").style.color = "green"
-    }else if(mdearr[cost.indexOf(Budget)] >0.15  & mdearr[cost.indexOf(Budget)] <= 0.25){
+    }else if(mde >0.15  & mde <= 0.25){
       risk1 = "Some risk of not getting significant results"
       document.getElementById('risk').style.color = "orange"
-    }else if(mdearr[cost.indexOf(Budget)] >0.25){
+    }else if(mde >0.25){
       risk1 = "HIGH RISK of not getting significant results"
       document.getElementById('risk').style.color = "red"
     }else{
       risk1 = "You need at least " + Math.min.apply(Math, Budgets)*2 + " " + document.getElementById('currency').value + " to conduct a test with these values"
       document.getElementById('risk').style.color = "red"
     }
+    
 
     
     sampleSize = sampleSize1[cost.indexOf(Budget)]
@@ -50,9 +52,10 @@ var do_calcul = function() {
     document.getElementById('budgetc').innerHTML = (Budget1/2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " " + document.getElementById('currency').value;
     document.getElementById('budgett').innerHTML = (Budget1/2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " " + document.getElementById('currency').value;
     document.getElementById('risk').innerHTML = risk1
-    document.getElementById('incr').innerHTML = "An uplift from " + num1*100 + "% to " + (conv[cost.indexOf(Budget)]*100).toFixed(3) + "% is significant if we have:";
+    document.getElementById('incr').innerHTML = "An uplift from " + num1*100 + "% to " + (conv[cost.indexOf(Budget)]*100).toFixed(3) + "% is significant if we have:"
     document.getElementById('samptot').innerHTML = Math.round(sampleSize+sampleSize).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     document.getElementById('budgettot').innerHTML = (Budget1).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + document.getElementById('currency').value;
+    document.getElementById('mde').innerHTML = "The MDE is: " + mde*100 + "%"
   };
 
 var signs_buttons = document.getElementById("ssize");

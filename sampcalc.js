@@ -39,7 +39,7 @@ var do_calcul = function() {
       risk1 = "HIGH RISK of not getting significant results"
       document.getElementById('risk').style.color = "red"
     }else{
-      risk1 = "You need at least " + Math.min.apply(Math, Budgets)*2*freq + " " + document.getElementById('currency').value + " to conduct a test with these values"
+      risk1 = "You need at least " + (Math.min.apply(Math, Budgets)*2*freq).toFixed(2) + " " + document.getElementById('currency').value + " to conduct a test with these values"
       document.getElementById('risk').style.color = "red"
     }
     

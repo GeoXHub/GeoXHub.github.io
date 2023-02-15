@@ -18,15 +18,16 @@
    </i>
 <hr style="clear:both">
 <h3>
-  Base performance rate: 
-  <div class="wrapper">
-    <input id="BCR" size="5"/>
-    <span class="label">%</span>
-  </div>
-</h3> 
-<i>The number of clicks/visits/transactions (i.e. primary KPI) divided by total number of impressions.</i>
+  Buying model:
+  <span class="wrapper">
+    <select id="buyingmodel" onchange="myPriceFunction()";>
+    <option value="" selected disabled hidden>Choose here</option>
+    <option value="cpm">CPM</option>
+    <option value="cpc">CPC</option>
+    </select>
+  </span>
 <h3>
-  Buying CPM:
+  Buying value:
   <div class="wrapper">
     <input id="CPM" size="5"/> 
     
@@ -200,12 +201,32 @@
 </span>
   </div>
 </h3> 
+<i style="font-size:14px; "> Average value based on the buying model selected above</i>
+<h3>
+  Base conversion rate: 
+  <div class="wrapper">
+    <input id="BCR" size="5"/>
+    <span class="label">%</span>
+  </div>
+</h3> 
+<i style="font-size:14px; "> Ex. If your buying model is CPC, input your average clicks to purchase rate.   </i>
+<br>
+<i style="font-size:14px; "> Ex. If your buying model is CPM, input your average impression to purchase rate. </i>
+</h3>
 <h3>
   Avg. campaign frequency
   <div class="wrapper">
-    <input id="Frequency" size = "5" value="1"/>
+    <input id="Frequency" size = "5"/>
   </div>
 </h3>
+<i style="font-size:14px; "> Input requires if using CPM.   </i>
+<h3>
+  CTR
+  <div class="wrapper">
+    <input id="CTR" size = "5"/>
+  </div>
+</h3>
+<i style="font-size:14px; "> Input requires if using CPC.   </i>
 <h3>
   Max budget for test
   <div class="wrapper">
@@ -223,8 +244,9 @@
 
   <div class="row">
     <div class="column"> <h3 id="incr" style="text-align:left;float:left"></h3></div>
-    <div class="column"> <h2> Sample size <br> (Based on impressions)</h2></div>
+    <div class="column"> <h2> Sample size <br> (Based on <span class="label" id = "sel_mod" >impressions</span>) </h2></div>
     <div class="column"> <h2>Budget</h2></div>
+    
   </div>
   <div class="row">
     <div class="column">  <h2 style="text-align:left;float:left;">Test Cell: </h2><br></div>
@@ -254,4 +276,20 @@
   function myNewFunction(sel) {
   document.getElementById('maxbud').innerHTML = sel.options[sel.selectedIndex].text;
 }
+</script>
+<script>
+  function myPriceFunction() {
+  var select = document.getElementById("buyingmodel");
+  var text = select.options[select.selectedIndex].text;
+  if(text == 'CPM'){
+    document.getElementById('sel_mod').innerHTML = "Impressions";
+    document.getElementById('Frequency').disabled = false;
+    document.getElementById('CTR').disabled = true
+  }
+  else if(text == 'CPC'){
+    document.getElementById('sel_mod').innerHTML = "Clicks";
+    document.getElementById('Frequency').disabled = true;
+    document.getElementById('CTR').disabled = false
+  }
+  }
 </script>

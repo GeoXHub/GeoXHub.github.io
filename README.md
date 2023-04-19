@@ -1,8 +1,11 @@
-Simple sample size/budget calculator based on base conversion rate and CPM based on the calculations from:
+Simple sample size/budget calculator based on base conversion rate and CPM based on the calculations from: 
+https://www.evanmiller.org/ab-testing/sample-size.html
 
+
+
+```
 def calc_sample_size(alpha, power, p, pct_mde):
-    """ Based on https://www.evanmiller.org/ab-testing/sample-size.html
-
+    """ 
     Args:
         alpha (float): How often are you willing to accept a Type I error (false positive)?
         power (float): How often do you want to correctly detect a true positive (1-beta)?
@@ -21,3 +24,4 @@ def calc_sample_size(alpha, power, p, pct_mde):
 
 Confidence level is fixed to be 95%
 Statistical Power is fixed to be 80%
+```

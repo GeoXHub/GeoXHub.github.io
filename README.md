@@ -22,6 +22,7 @@ def calc_sample_size(alpha, power, p, pct_mde):
 
     return (t_alpha2 * sd1 + t_beta * sd2) * (t_alpha2 * sd1 + t_beta * sd2) / (delta * delta)
 
+```
+
 Confidence level is fixed to be 95%
 Statistical Power is fixed to be 80%
-```

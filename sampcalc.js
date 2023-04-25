@@ -1,77 +1,56 @@
 var do_calcul = function() {
+
+
+    var bcr = document.getElementById("BCR").value;
+    var mde = document.getElementById("MDE").value;
+    var freq = document.getElementById("frequency").value;
     var mod = document.getElementById("buyingmodel");
     var selected_mod = mod.options[mod.selectedIndex].text;
-    var num1 = document.getElementById("BCR").value;
-    var num2 = document.getElementById("CPM").value;
-    var freq = document.getElementById("Frequency").value;
-    var ctr = document.getElementById("CTR").value;
-    var maxbud = document.getElementById("maxbudget").value;
-    num1 = Number(num1.replace(",","."));
-    num2 = Number(num2.replace(",","."));
+    var bvalue = document.getElementById("buyingvalue").value;
+
+    bcr = Number(bcr.replace(",","."));
+    mde = Number(mde.replace(",","."));
     freq = Number(freq.replace(",","."));
-    ctr  = Number(ctr.replace(",","."));
-    mdearr = [0.05, 0.06, 0.07, 0.08, 0.09,  0.1, 0.11, 0.12, 0.13, 0.14, 0.15, 0.2, 0.25, 0.3, 0.35];
-    num1/= 100;
-    conv = [];
-    conv1 = [];
-    a = [];
-    b = [];
-    sampleSize1 = [];
-    Budgets = [];
-    cost = []
+    bvalue = Number(bvalue.replace(",","."));
+
+    bcr/= 100;
+    mde/= 100;
+
+
+    /*
+    // Based on https://www.evanmiller.org/ab-testing/sample-size.html
+    Args:
+        alpha (float): How often are you willing to accept a Type I error (false positive)?
+        power (float): How often do you want to correctly detect a true positive (1-beta)?
+        bcr (float): Base conversion rate
+        mde (float): Minimum detectable effect, relative to base conversion rate.
+
+    */
+    var alpha = 0.05;
+    var power = 0.8;
+   
+    var delta = bcr * mde;
+    var t_alpha2 = jStat.normal.inv(1 - alpha / 2, 0, 1);
+    var t_beta = jStat.normal.inv(power, 0, 1);
     
-    for(var i=0;i<mdearr.length;i++){
-    conv[i] = (1+mdearr[i])*num1;
-    conv1[i] = (1-mdearr[i])*num1;
-    a[i] = 1.96 * Math.sqrt(((2+mdearr[i])*(2-2*(num1)-num1*mdearr[i])/2));
-    b[i] = 0.842 * Math.sqrt(1-num1 + (1+mdearr[i])*(1-num1-num1*mdearr[i])); 
-    sampleSize1[i] = Math.pow(a[i]+b[i], 2)/(Math.pow(mdearr[i],2)*num1);
+    var sd1 = Math.sqrt(2 * bcr * (1 - bcr));
+    var sd2 = Math.sqrt(bcr * (1 - bcr) + (bcr + delta) * (1 - bcr - delta));
+    
+    sampleSize = Math.pow(t_alpha2 * sd1 + t_beta * sd2, 2) / Math.pow(delta, 2);
+    
     if(selected_mod == "CPM"){
-      Budgets[i] = (num2/1000)*sampleSize1[i]; // for CPM
-      cost[i] = Budgets[i]*freq*2;
-    }else{
-      Budgets[i] = (num2)*sampleSize1[i]; // for CPC
-      cost[i] = Budgets[i]*ctr*2;
+      Budget = sampleSize * freq * bvalue / 1000; // Buy on CPM
+    }else if(selected_mod == "CPC"){
+      Budget = sampleSize * bvalue; // Buy on CPC
     }
-    }
-    let Budget = Math.max(...cost.filter(num => num <= maxbud));
 
-    mde = mdearr[cost.indexOf(Budget)]
-
-    if(mde <= 0.15){
-      var risk1 = "Small risk of not getting significant results"
-      document.getElementById("risk").style.color = "green"
-    }else if(mde >0.15  & mde <= 0.25){
-      risk1 = "Some risk of not getting significant results"
-      document.getElementById('risk').style.color = "orange"
-    }else if(mde >0.25){
-      risk1 = "HIGH RISK of not getting significant results"
-      document.getElementById('risk').style.color = "red"
-    }else{
-      if (selected_mod == "CPM"){
-        risk1 = "You need at least " + (Math.min.apply(Math, Budgets)*2*freq).toFixed(2) + " " + document.getElementById('currency').value + " to conduct a test with these values"
-        document.getElementById('risk').style.color = "red"
-      }else{
-        risk1 = "You need at least " + (Math.min.apply(Math, Budgets)*2*ctr).toFixed(2) + " " + document.getElementById('currency').value + " to conduct a test with these values"
-        document.getElementById('risk').style.color = "red"
-      }
-    }
-    
-
-    
-    sampleSize = sampleSize1[cost.indexOf(Budget)]
-
-    Budget1 = Math.round(((Budget) + Number.EPSILON) * 100) / 100;
 
     document.getElementById("sampc").innerHTML = Math.round(sampleSize).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    document.getElementById("sampt").innerHTML = Math.round(sampleSize).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");;
-    document.getElementById('budgetc').innerHTML = (Budget1/2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " " + document.getElementById('currency').value;
-    document.getElementById('budgett').innerHTML = (Budget1/2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " " + document.getElementById('currency').value;
-    document.getElementById('risk').innerHTML = risk1
-    document.getElementById('incr').innerHTML = "Only a result of < " + (conv1[cost.indexOf(Budget)]*100).toFixed(3) + "% or > " + (conv[cost.indexOf(Budget)]*100).toFixed(3) + "% is significant if we have:"
-    document.getElementById('samptot').innerHTML = Math.round(sampleSize+sampleSize).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    document.getElementById('budgettot').innerHTML = (Budget1).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + document.getElementById('currency').value;
-    document.getElementById('mde').innerHTML = "The MDE is: " + mde*100 + "%"
+    document.getElementById("sampt").innerHTML = Math.round(sampleSize).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    document.getElementById('budgetc').innerHTML = Math.round(Budget).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " " + document.getElementById('currency').value;
+    document.getElementById('budgett').innerHTML = Math.round(Budget).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " " + document.getElementById('currency').value;
+    document.getElementById('samptot').innerHTML = Math.round(sampleSize*2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    document.getElementById('budgettot').innerHTML = Math.round(Budget*2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " " + document.getElementById('currency').value;
   };
 
 var signs_buttons = document.getElementById("ssize");
@@ -89,5 +68,6 @@ for(var i = 0; i < inputs.length; i++) {
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
 
 }

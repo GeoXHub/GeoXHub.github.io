@@ -7,32 +7,52 @@
   <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
-<img src="Ikea_logo.svg.png" style="width:210px;height:100px;left:100px;position:fixed">
+<img src="Ikea_logo.svg.png" style="width:180px;height:80px;left:100px;position:fixed">
 <h1> A/B Test, budget calculator (BETA)</h1>
-<a class="infolink" href="glossary.html"></a>
   <h3>
     About this calculator
   </h3>
-<i>This calculator will help you determine the minimum sample size and budget required to run statistically significant A/B tests. <br>
-  Statistical significance ensures that test findings are reliable and representative of your wider customer base, and not down to luck or chance.
-   </i>
+<i>
+This calculator will help you determine the minimum sample size and budget required to run statistically significant A/B tests. <br>
+Statistical significance ensures that test findings are reliable and representative of your wider customer base, and not down to luck or chance.
+<br> <br> 
+<p>Refer to <mark style="background: #0058AB!important; color: #FFFFFF"> AB Testing Best Practice.pptx </mark> for more information.</p> 
+
 <hr style="clear:both">
+
 <h3>
-  Buying model:
+  Base Conversion Rate: 
+  <div class="wrapper">
+    <input id="BCR" size="5" type="number" title="Enter BCR to calculate sample size"/>
+    <span class="label">%</span>
+  </div>
+</h3> 
+
+<h3>
+  Minimal Detectable Effect: 
+  <div class="wrapper">
+    <input id="MDE" size="5" type="number" title="Enter MDE to calculate sample size"/>
+    <span class="label">%</span>
+  </div>
+</h3> 
+
+<h3>
+  Buying Model:
   <span class="wrapper">
-    <select id="buyingmodel" onchange="myPriceFunction()";>
+    <select id="buyingmodel" onchange="myPriceFunction()" title="Select a buying model to calculate required budget" ;>
     <option value="" selected disabled hidden>Choose here</option>
     <option value="cpm">CPM</option>
     <option value="cpc">CPC</option>
     </select>
   </span>
+</h3>
+
 <h3>
-  Buying value:
+  Buying Value:
   <div class="wrapper">
-    <input id="CPM" size="5"/> 
-    
+    <input id="buyingvalue" size = "5" type="number" title="Enter CPM or CPC to calculate required budget"/>
     <span class="container">
-      <select id="currency" name="currency" onchange="myNewFunction(this)";>
+      <select id="currency" name="currency" onchange="myNewFunction(this)" title="Select a currency" ;>
       <option value="EUR">EUR</option>
       <option value="USD">USD</option>
       <option value="GBP">GBP</option>
@@ -199,53 +219,39 @@
       <option value="ZMK">ZMK</option>
     </select>
 </span>
-  </div>
-</h3> 
-<i style="font-size:14px; "> Average value based on the buying model selected above</i>
-<h3>
-  Base conversion rate: 
-  <div class="wrapper">
-    <input id="BCR" size="5"/>
-    <span class="label">%</span>
-  </div>
-</h3> 
-<i style="font-size:14px; "> Ex. If your buying model is CPC, input your average clicks to purchase rate.   </i>
-<br>
-<i style="font-size:14px; "> Ex. If your buying model is CPM, input your average impression to purchase rate. </i>
+  </div>  
 </h3>
+<small>Input average CPM or CPC as buying value based on the buying model chosen above. </small>
+
+ 
 <h3>
-  Avg. campaign frequency
+  Avg. Campaign Frequency:
   <div class="wrapper">
-    <input id="Frequency" size = "5"/>
+    <input id="frequency" size = "5" type="number" title="Enter frequency to calculate required budget"/>
   </div>
 </h3>
-<i style="font-size:14px; "> Input requires if using CPM.   </i>
-<h3>
-  CTR
-  <div class="wrapper">
-    <input id="CTR" size = "5"/>
-  </div>
-</h3>
-<i style="font-size:14px; "> Input requires if using CPC.   </i>
-<h3>
-  Max budget for test
-  <div class="wrapper">
-    <input id="maxbudget" size = "5" value = "10000"/>
-     <span class="label" id = "maxbud" ></span>  
-  </div>
-</h3>
-<i>Refer to Glossary for more information</i><br>
-<br>
+
+
+
+
+  <br>
    <center>
   <button class="sign" id="ssize"><h2>Calculate</h2></button><br>
   </center>
-  <h3 id="risk" style="text-align:left;float:left"></h3>
+  <br>
+  <i style="font-size:14px; "> Confidence Level (1- &#945):  95%</i>
+  <br>
+  <i style="font-size:14px; "> Statistical Power (1- &#946):  80%</i>
+  <br>
+
+  <br>
   <hr style = "clear:both">
 
   <div class="row">
     <div class="column"> <h3 id="incr" style="text-align:left;float:left"></h3></div>
-    <div class="column"> <h2> Sample size <br> (Based on <span class="label" id = "sel_mod" >impressions</span>) </h2></div>
-    <div class="column"> <h2>Budget</h2></div>
+    <div class="column"> <h2> Sample size </h2></div>
+    <div class="column"> <h2> Required Budget <small> <span class="label" id = "sel_mod" ></span> </small></h2></div>
+
     
   </div>
   <div class="row">
@@ -269,27 +275,23 @@
   <h3 id = "mde" style="text-align:left;float:left"></h3>
 
 
-</center>
+ <script type="text/javascript" src="jstat.js"></script>
  <script type="text/javascript" src="sampcalc.js"></script>
 
-<script>
-  function myNewFunction(sel) {
-  document.getElementById('maxbud').innerHTML = sel.options[sel.selectedIndex].text;
-}
-</script>
+
 <script>
   function myPriceFunction() {
   var select = document.getElementById("buyingmodel");
   var text = select.options[select.selectedIndex].text;
   if(text == 'CPM'){
-    document.getElementById('sel_mod').innerHTML = "Impressions";
-    document.getElementById('Frequency').disabled = false;
-    document.getElementById('CTR').disabled = true
+    document.getElementById('sel_mod').innerHTML = "(Buy on CPM)";
+    document.getElementById('frequency').disabled = false;
   }
   else if(text == 'CPC'){
-    document.getElementById('sel_mod').innerHTML = "Clicks";
-    document.getElementById('Frequency').disabled = true;
-    document.getElementById('CTR').disabled = false
+    document.getElementById('sel_mod').innerHTML = "(Buy on CPC)";
+    document.getElementById('frequency').disabled = true;
+    document.getElementById('frequency').value = '';
+
   }
   }
 </script>

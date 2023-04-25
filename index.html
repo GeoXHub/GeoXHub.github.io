@@ -21,7 +21,9 @@ Statistical significance ensures that test findings are reliable and representat
 <hr style="clear:both">
 
 <h3>
-  Base Conversion Rate: 
+  Base Conversion Rate 
+  <span class="tooltip" title="Expected conversion rate of the Control group. You may infer this from historical campaign data."> [?]</span>
+  : 
   <div class="wrapper">
     <input id="BCR" size="5" type="number" title="Enter BCR to calculate sample size"/>
     <span class="label">%</span>
@@ -29,7 +31,9 @@ Statistical significance ensures that test findings are reliable and representat
 </h3> 
 
 <h3>
-  Minimal Detectable Effect: 
+  Minimal Detectable Effect
+  <span class="tooltip" title="Expected percentage change in conversion rate between the Control group and Test group. This forms your hypothesis."> [?]</span>
+  : 
   <div class="wrapper">
     <input id="MDE" size="5" type="number" title="Enter MDE to calculate sample size"/>
     <span class="label">%</span>
@@ -239,9 +243,9 @@ Statistical significance ensures that test findings are reliable and representat
   <button class="sign" id="ssize"><h2>Calculate</h2></button><br>
   </center>
   <br>
-  <i style="font-size:14px; "> Confidence Level (1- &#945):  95%</i>
+  <i style="font-size:14px; "> Statistical Significance <span class="tooltip" title="95% is an accepted standard for statistical significance."> [?]</span> :  95% </i>
   <br>
-  <i style="font-size:14px; "> Statistical Power (1- &#946):  80%</i>
+  <i style="font-size:14px; "> Statistical Power <span class="tooltip" title="80% is an accepted standard for statistical power."> [?]</span> :  80% </i>
   <br>
 
   <br>
@@ -249,7 +253,9 @@ Statistical significance ensures that test findings are reliable and representat
 
   <div class="row">
     <div class="column"> <h3 id="incr" style="text-align:left;float:left"></h3></div>
-    <div class="column"> <h2> Sample size </h2></div>
+    <div class="column"> <h2> Sample size 
+    <small><span class="tooltip" title="Number of unique users in your Test and Control groups."> [?]</span></small>
+    </h2></div>
     <div class="column"> <h2> Required Budget <small> <span class="label" id = "sel_mod" ></span> </small></h2></div>
 
     

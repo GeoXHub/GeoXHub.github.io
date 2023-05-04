@@ -41,7 +41,7 @@ var do_calcul = function() {
     if(selected_mod == "CPM"){
       Budget = sampleSize * freq * bvalue / 1000; // Buy on CPM
     }else if(selected_mod == "CPC"){
-      Budget = sampleSize * bvalue; // Buy on CPC
+      Budget = sampleSize * bvalue * bcr; // Buy on CPC
     }
 
 
